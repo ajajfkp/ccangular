@@ -1,0 +1,359 @@
+<div header></div>
+<div class="rest-body">
+	<div class="rest-body-inner-new">
+		<div id="main-charge-capture-list">
+			<div id="refreshPopup" class="left" style="position: absolute;right:45px;   margin-top: 48px;">
+				<img src="images/cc_refresh.png" style="width:40px;">
+			</div>
+			<div class="secnd-hed-top">
+				<div class="menu-drp-dwn topmenu" style="width:15%;" ng-click="showmainsearch();">
+					<div class="menu-linner">
+						<span class="dashline-2-menue">&nbsp;</span>
+						<div style="float:left; width:15px;">
+							<span class="dashline-menue">&nbsp;</span>
+							<span class="dashline-menue">&nbsp;</span>
+						</div>
+						<span class="arro-topway-menue"></span>
+					</div>
+					<div class="drop-down-mene hide topmenu-list">
+						<div class="drop-down-optionbox">
+							<div class="select-arrow">
+								<div class="menu-linner-inside">
+									<span class="dashline-2">&nbsp;</span>
+									<div style="float:left; width:15px;">
+									<span class="dashline">&nbsp;</span>
+									<span class="dashline">&nbsp;</span>
+									</div>
+									<span class="arro-topway"></span>
+								</div>
+							</div>	
+							<div class="">
+								<span class="option-list" id="patnt-flr">Patient Name</span>
+								<span class="option-list" id="discharg-flr">Discharge Date</span>
+								<span class="option-list" id="admitted-flr">Admitted Date</span>
+								<span class="option-list" id="billing-flr">Billing Status</span>
+								<span class="option-list" id="mrn-flr">MRN #</span>
+							</div>
+						</div>	
+					</div>
+				</div>
+				
+				<div class="search-area cc-srch-area">
+					<span class="input">
+						<span class="search-innr-effects">
+						<input class="seach-input" type="text" placeholder="" id="searchkey" clickbutton="searchdo" value="">
+						<input type="hidden" id="searchKeytype" value="">
+						
+						</span>	
+						<img class="search-icon" id="searchdo" src="images/searchcon.png">
+						<span class="crss-icon-srch-ptnt" id="crossimg" ng-hide="true">X</span>
+					</span>	
+					
+					<div class="prdr-filter-area" id="billing-filter-area" style="margin-left: 3%; margin-top: 4px;">
+						<span class="lable-flter" style="margin-top: 3px; width: 65px;">Status:</span>
+						<div class="cc-bill-stats-fltr">
+							<span class="result-flter billig-status" style="width:83%;"></span>
+							<input type="hidden" value="" id="billingStatusVal">
+							<input type="hidden" value="" id="billingStatusId">
+							<span class="droparro-flter">&nbsp;</span>
+						</div>
+						<div class="drop-down-provider drop-down-billing hide" style="left: 115px;">
+							<div class="drop-down-optionbox billingDrop">
+								<div class="select-arrow-right">
+									<div class="provider-linner-inside">
+										<span class="provider-down-arro"></span>
+									</div>
+								</div>	
+								<div class="" style="max-height:330px; overflow-x:hidden;">
+									<span class="option-list" onclick="filterBybilling('0','To be billed')">To be billed</span>
+									<span class="option-list" onclick="filterBybilling('1','Received')">Received</span>
+									<span class="option-list" onclick="filterBybilling('2','Billed')">Billed</span>
+									<span class="option-list" onclick="filterBybilling('3','Money collected')">Money collected</span>
+									<span class="option-list" onclick="filterBybilling('4','Archieved')">Archieved</span>
+									<span class="option-list" onclick="filterBybilling('5','Send to biller')">Sent to biller</span>
+									<span class="option-list" onclick="filterBybilling('6','Billing Issue')">Billing Issue</span>
+									<span class="option-list" onclick="filterBybilling('All','All')">All</span>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="cc-thrd-hdr-top">
+				<div class="prdr-filter-area cc-provdr-fltr-ar-wd" id="prdr-filter-area">
+					<span class="result-flter selct-doct-name cc-doctr-name">MUSTAFA</span>
+					<input type="hidden" value="" id="slctDocVal">
+					<input type="hidden" value="" id="slctDocId">
+					<span class="cc-providr-drpDwn-fltr">&nbsp;</span>
+					<div class="drop-down-provider drop-down-provider-filter cc-drpDwn-provder hide">
+						<div class="drop-down-optionbox providerDrop">
+							<div class="select-arrow-right">
+								<div class="provider-linner-inside">
+									<span class="provider-down-arro"></span>
+								</div>
+							</div>
+							<div class="" style="max-height:330px; overflow-x:hidden;">
+								<span class="option-list" onclick="filterByProvider()">status</span>
+							</div>
+						</div>	
+					</div>
+				</div>
+				<div class="cc-ad-patnt-icn" id="add-cc-mobile-patient">
+					<img class="cc-ad-patnt-img-icn" src="images/add-p.png">
+				</div>
+			</div>
+			<nav>
+				<div class="trd-nav-row">
+					<div class="allStClass">
+						<div class="all-status">
+							<span class="all-text temp-slect-Addmi-dd">ALL</span>
+							<img  class="drop-arr-ftlr" src="images/add-fltr.png" />
+						</div>
+						<div class="drop-down-topnav hide">
+							<div class="top-nod" id="top-nod">
+								<div class="all-status">
+									<span class="all-text temp-slect-Addmi-dd <?php echo $addststclass; ?>"><?php echo $ststVal; ?></span></span>
+									<input type="hidden" value="<?php echo (empty($statusvar)?'Admitted':$statusvar);?>" id="admissionStatusVal">
+									<input type="hidden" value="<?php echo (empty($statusvar)?'Admitted':$statusvar);?>" id="admissionStatusId">
+									<img  class="drop-arr-ftlr" src="images/add-fltr.png" />
+								</div>
+							</div>
+							<div class="drop-down-optionbox autoCloseSoapTypeChild">
+								<span class="option-list" onclick="filterAdmissionStatus('AD','Admitted')" >Admitted <span class="status-light margin-manage"> </span></span>
+								<span class="option-list" onclick="filterAdmissionStatus('DE','Discharge')" >Discharged <span class="status-light-3 margin-manage"> </span></span>
+								<span class="option-list" onclick="filterAdmissionStatus('CT','Consult')" >Consult Done<span class="status-light-2 margin-manage"> </span></span>
+								<span class="option-list" onclick="filterAdmissionStatus('FD','Follow')" >Follow Up Done<span class="status-light-4 margin-manage"> </span>
+								</span>
+								<span class="option-list" onclick="filterAdmissionStatus('All','All')">All <span style="float:left; margin-right: 10px; width: 17px;">&nbsp; </span></span>
+							</div>
+						</div>
+					</div>
+			<!------facility and week filters----------->	
+					<div class="restlable-row">		
+						<div class="all-hsptl" id="all-hsptl">
+							<span class="imag-icon">
+								<img  class="drop-arr-ftlr-2" src="images/hospital.png" />
+							</span> 
+							<span class="all-text temp-slect-Facility-dd">ALL</span>	
+							<input type="hidden" value="All" id="faciltyFilterValue">
+							<input type="hidden" value="" id="faciltyFilterId">
+							<div class="drop-down-topnav-2nd hide">
+								<div class="top-nod width100 top-nod-2">
+									<div id="all-hsptl-2" class="all-hsptl-2">
+										<span class="imag-icon">
+											<img src="images/hospital.png" class="drop-arr-ftlr-2" />
+										</span> 
+										<span class="all-text temp-slect-Facility-dd">ALL</span>
+									</div>
+								</div>
+								<div class="drop-down-optionbox drop-down-optionbox2 maxwdt250px">
+									<span onclick="mobileFilterFacility('All','All')" class="option-list">All</span>
+								</div>
+							</div>
+						</div>
+						<div class="allStClasstov">
+							<div class="all-status">
+								<span class="all-text temp-slect-tov-Addmi-dd">ALL</span>
+								<img  class="drop-arr-ftlr" src="images/add-fltr.png" />
+							</div>
+							<div class="drop-down-topnavtov hide">
+								<div class="top-nod type-selected-wd-bg" id="top-nod">
+									<div class="all-status">
+										<span class="all-text temp-slect-tov-Addmi-dd">ALL</span>
+										<input type="hidden" value="" id="admissionTovStatusVal">
+										<input type="hidden" value="" id="admissionTovStatusId">
+										<img  class="drop-arr-ftlr" src="images/add-fltr.png" />
+									</div>
+								</div>
+								<div class="drop-down-optionbox autoCloseSoapTypeChild">
+									<span class="option-list" onclick="filterAdmissionTovStatus('ADM','Admitted')" >Admisson <span class="ser-stst-conslt-srcl-bx ccrm-ststs-admit-color">A</span></span>
+									<span class="option-list" onclick="filterAdmissionTovStatus('CNT','Consult')" >Consult<span class="ser-stst-conslt-srcl-bx ccrm-ststs-cnslt-color">C</span></span>
+									<span class="option-list" onclick="filterAdmissionTovStatus('FLW','Follow')" >Follow Up<span class="ser-stst-conslt-srcl-bx ccrm-ststs-flup-color">F</span>
+									</span>
+									<span class="option-list" onclick="filterAdmissionTovStatus('All','All')">All <span style="float:left; margin-right: 10px; width: 17px;">&nbsp; </span></span>
+								</div>
+							</div>
+						</div>
+						<div class="crnt-days" id="crnt-days">
+							<span class="imag-icon">
+								<img  class="drop-arr-ftlr-3" src="images/calendre.png" />
+							</span>
+							<span class="all-text temp-slect-dd">This Week</span>
+							<input type="hidden" value="" id="ccVisitFilterValue">
+							<div class="drop-down-topnav-3rd hide">
+								<div class="top-nod-3">
+									<span class="imag-icon">
+										<img src="images/calendre.png" class="drop-arr-ftlr-3" />
+									</span>
+									<span class="all-text temp-slect-dd">This Week</span>
+								</div>
+								<div class="drop-down-optionbox drop-down-optionbox3 maxwdt250px">
+									<span class="option-list" onclick="mobileFilterDuration('TD','Today')">Today </span>
+									<span class="option-list" onclick="mobileFilterDuration('YD','Yesterday')">Yesterday </span>
+									<span class="option-list" onclick="mobileFilterDuration('TW','This Week')">This Week</span>
+									<span class="option-list" onclick="mobileFilterDuration('LW','Last Week')">Last Week </span>
+									<span class="option-list" onclick="mobileFilterDuration('TM','This Month')">This Month </span>
+									<span class="option-list" onclick="mobileFilterDuration('LM','Last Month')">Last Month</span>
+									<span class="option-list" onclick="javascript:showHideCCMobCalendar();">Pick a date
+									</span>
+									<span class="option-list" onclick="mobileFilterDuration('All','All')">All</span>
+								</div>
+							</div>
+								
+						</div>
+					</div>			
+				</div>
+			</nav>
+		<span id="pickadate" style="display:none;position:absolute;float:left;top:25%;right:10%;z-index:99999"></span>
+			<!--email section-->
+		<div class="cc-mobile-message hide" id="EmailSections">		
+			<div class="patnt-info-name-hd">
+				<span class="pntname">Message</span>
+				<span class="go-to-home email-backawwo"><img src="images/Shape-back.png"></span>
+			</div>
+			<section>
+				<div class="Email-popup">
+					<div class="email-link-header">
+						<span  id="sendToBillerMob" class="link saveandcancel-link">Send</span>
+						<input type="hidden" id="sendEmailforBillBillId" value="">
+						<input type="hidden" id="sendEmailforBillService" value="">
+						<span class="divider-link">|</span>
+						<span class="link saveandcancel-link" id="closeMessageView">
+							Cancel
+						</span>
+					</div>
+					<div class="email-sender-info-box">
+						<div class="sender-selection-row">
+							<span class="to-lable-email">To:</span>
+							<span class="to-input-email">
+								<input type="hidden" value="" id="lastSelectedUserId">
+								<input type="text" id="billerEmail"  name="billerEmail" readonly="readonly" id="toIdIntra" value="<?php echo CHARGE_CAPTURE_BILLER_EMAIL;?>" size="60">
+							</span>
+						</div>
+						<div class="sender-selection-row">
+							<span class="subject-lable-email">Subject:</span>
+							<span class="to-input-email"><input type="text" id="billerSubject" name="billerSubject" class="email-reciver-name" value="" size="60" readonly="readonly"></span>
+						</div>
+					</div>
+					<div class="email-link-header ">
+						<span class="link saveandcancel-link">Attach</span>
+						<input id="fileToUpload" class="mobile_email-popup-browse" type="file" name="fileToUpload" onchange="javascript:placeNameExternalMob(this.value);">
+						<span class="divider-link">|</span>
+						<span class="link saveandcancel-link" onclick="removeAllEmailFiles();">
+							Remove all
+						</span>
+					</div>
+					<div id="uploadedimagesExternalMob" class="email-atch-bdy-block attach-block-popup">
+					
+					</div>
+					<div class="email-writeing-block">
+						<div id="emailBody" class="email-textbox" contenteditable="true">
+							
+						</div>
+					</div>
+				</div>
+			</section>			
+		</div>
+		<div class="mng-bil-list-mid-sec" id="more-data-id">	
+			<div class="section">
+				<div id="mobilePatientList">
+						<aside>
+							<span class="<?php echo $statusClass1; ?>">&nbsp;</span>
+							<span class="<?php echo $statusClass2; ?>"><?php echo $statusMessage; ?></span>
+						</aside>
+						<div class="rfc-dsgn-mtter fixheight85 article">
+							<div class="left-sd-bx">
+								<a href="<?php echo base_url(); ?>cc/index/visitEncounter/<?php echo $val->id; ?>">
+							<?php 
+								$extraClass = (($val->patient_type=='1')?"named-pnt-type-med":"");
+							?>
+									<div class="named-pnt <?php echo $extraClass; ?>">
+										<span class="left clipText width-46-nw">
+											<b><?php echo $patientInfoName; ?></b>
+										</span>
+										<span class="pnt-info">
+											<?php 
+												if(!empty($patientInfoDob)){
+													echo $patientInfoAge;
+												}
+												echo ' ' . $patientInfoGender;
+												?>,
+												<b> DOB:</b>
+												<?php 
+													if(!empty($patientInfoDob)) {
+														echo $patientInfoDob;
+													}
+												?>
+										</span>
+									</div> 
+									<span class="scnd-info-row clipText">
+										<b>ID:</b>
+										<?php 
+											echo $patientInfoId . ', ' . (empty($val->facility_name)?'N/A':$val->facility_name)
+										?>
+									</span>
+									<span class="scnd-info-row">
+										<b>Adm:</b>
+										<?php 
+										echo $this->utilities->showDateForSpecificTimeZone($val->date_of_admission);?>,
+										<b>Dis:</b>
+										<?php 
+											echo $this->utilities->showDateForSpecificTimeZone($val->date_of_discharge);
+										?>
+									</span>
+									<span class="scnd-info-row">
+										<span class="left nw-modi-wd-46">
+											<b>Encounter:</b>
+											<?php echo $crrTime; ?>
+										</span> 
+										<?php echo $serviceStat; ?>
+										<?php echo $billStat; ?>
+										<?php echo $totalRvusView; ?>
+									</span>
+								</a>
+							</div>
+							<div class="right-sd-bx" id="listParent">
+								<span class="rgt-side-img-2 menu-1" onclick="ShowDropdown(<?php echo $val->id; ?>)"><img src="images/menue-drp.png"></span>
+								<div class="drop-down billListDd hide" id="listId_<?php echo $val->id; ?>">
+									<div class="hundee" id="hundee_<?php echo $val->id; ?>" onclick="hideDropdown()">
+										<span class="dashline-2">&nbsp;</span>
+										<div style="float:left; width:15px;">
+											<span class="dashline">&nbsp;</span>
+											<span class="dashline">&nbsp;</span>
+										</div>
+										<span class="arro-topway"></span>
+									</div>
+									<div class="drop-backg">
+										<a href="<?php echo base_url(); ?>cc/index/addNewEncounter/" >
+											<span class="option-list" id="newEnctrMobile123">
+												New Encounter
+											</span>
+										</a>
+										<a href="<?php echo base_url(); ?>cc/index/addNewEncounter/1" >
+											<span class="option-list" id="newEnctrMobile123">
+												New Procedure
+											</span>
+										</a>
+							
+										<span class="option-list" id="newAdmission" onclick="newAdmissionCopy('','1')" >New Admission</span>
+
+										<span class="option-list" id="generateBill" onclick="generateCcBillConfirm()" >			Generate Bill
+										</span>
+
+										<span class="option-list" id="sendTobillermob" onclick="javascript:emailfromhomemob(<?php echo $val->id; ?>)">Email</span>
+										<span class="option-list" onclick="javascript:deleteCp()">Delete</span>
+									</div>
+								</div>
+								<div style="float:left; margin-top:10px; margin-left:5px; font-weight:bold"><?php echo "[".$patientType."]";?></div>
+							</div>
+						</div>
+						<div style="clear:both;">
+						</div>	
+				</div>	
+			</div>
+			<input type="hidden" name="serchInAllDb" id="serchInAllDb" value="">			
+			</div>
+		</div>
+	</div>
+</div>
+<div footer></div>

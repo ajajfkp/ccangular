@@ -1,0 +1,71 @@
+<header>
+	<div id="top-section">
+		<div class="logo">
+			<img class="hd-logo" src="images/medgre-logo.png">
+		</div> 
+		<div class="rgt-sd-lable">
+			<div class="header-title-lable">
+				<h3>Charge <span class="grrn">C</span>apture & <span>R</span>ounding</h3>
+			</div>
+			<div  class="login-area">
+				<div class="usr-selection User-arro" >
+					<span ng-click='toggleModal()' class="drop-arro welcome-menu-arrow-up">&nbsp;</span>
+					<span class="shw-nme">
+						Clinic Name
+					</span>
+					<span class="hi-all"> Hi!</span>
+					<modal-dialog  show='{{modalShown}}'>this is dialog one</modal-dialog>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+
+<div class="home-change-password-main" ng-hide="true">
+	<div class="home-change-password-header">
+		<span class="home-change-password-title">Change password</span>
+		<span class="home-change-password-close">X</span>
+	</div>
+	<div class="home-change-password-inner">
+		<div class="home-change-password-note">
+			<span class="home-change-password-note-text">
+				<ul>
+					<li>Password should contain at least 8 characters</li>
+					<li>It should not contain your first &amp; last name</li>
+					<li>At least one character should be numeric</li>
+					<li>At least one character should be special character</li>
+					<li>At least one character should be in CAPS / Capital</li>
+				</ul>
+			</span>
+		</div>
+		<input id="clinicPasswordStrength" value="1" type="hidden">
+		<input name="user_id" id="user_id" value="2" type="hidden">
+		<div class="home-change-password-row">
+			<span class="home-password-label" style="margin-top:3px;">Old password:</span>
+			<span class="home-password-input">
+				<input tabindex="101" clickbutton="changepasswordonlogin" value="" id="oldpassword" name="oldpassword" class="change-password-input" type="password">
+			</span>
+		</div>
+		<div class="home-change-password-row">
+			<span class="home-password-label" style="margin-top:3px;">New password:</span>
+			<span class="home-password-input">
+			<input tabindex="102" clickbutton="changepasswordonlogin" value="" id="password" name="password" class="change-password-input" type="password">
+			</span>
+		</div>
+		<div class="home-change-password-row">
+		<span class="home-password-label">Confirm new password:</span>
+		<span class="home-password-input"><input tabindex="103" clickbutton="changepasswordonlogin" value="" id="confirm_password" name="confirm_password" class="change-password-input" type="password"></span>
+		</div>
+		<div class="home-change-password-action">
+
+		<ul class="btn-ul">
+		<li style="list-style:none;">
+		<span tabindex="105" clickbutton="closeChangePassPopup" class="home-change-password-cancel " id="closeChangePassPopup">Cancel</span>
+		<span tabindex="104" clickbutton="changepasswordonlogin" class="home-change-password-save" id="changepasswordonlogin">Save</span>
+		</li>
+		</ul>
+		</div>
+	</div>
+</div>

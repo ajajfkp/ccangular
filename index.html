@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="noteMpdule">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{{ title }}</title>
+	<link href="bootstrap/css/style.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <toaster-container toaster-options="{'time-out': 4000}"></toaster-container>
+  <div id="body-wraper">
+		<div class="container">
+			<div ng-view></div>
+		</div> <!-- /container -->
+	</div> <!-- /body-wraper -->
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	
+    <script src="lib/jquery.min.js" type="application/javascript"></script>
+    <script src="lib/angular.min.js" type="application/javascript"></script>
+    <script src="app/app.js" type="application/javascript"></script>
+    <script src="app/authCtrl.js" type="application/javascript"></script>
+    <script src="module/angular-route.js" type="application/javascript"></script>
+    <script src="module/ng-infinite-scroll.min.js" type="application/javascript"></script>
+	<script src="module/toaster.js" type="application/javascript"></script>
+	<script src="module/angular-md5.js" type="application/javascript"></script>
+	<script src="app/directives.js" type="application/javascript"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+  </body>
+   <!-- <toaster-container toaster-options="{'time-out': 3000}"></toaster-container> -->
+</html>
