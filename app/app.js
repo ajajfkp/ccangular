@@ -15,9 +15,15 @@ var app = angular.module('noteMpdule',['ui.router','infinite-scroll','toaster','
         })
 		.state('dashboard', {
 			url: '/dashboard',
-			templateUrl: 'partials/dashboard.html',
-			controller: 'dashboardCtrl',
-			controllerAs: 'dash'
+			views: {
+                '': { templateUrl: 'partials/dashboard.html',controller: 'dashboardCtrl' },
+                'columnOne@dashboard': { 
+					templateUrl: 'partials/header.html'
+				},
+                'columnTwo@dashboard': { 
+                    templateUrl: 'partials/footer.html'
+                }
+            }
 		})
 		/*.state('Dashboard.view', {
 			title: 'Edit Note',
@@ -68,8 +74,8 @@ var app = angular.module('noteMpdule',['ui.router','infinite-scroll','toaster','
 			offset: '0',
 			limit: '10'
 		}).then(function (results) {
-			$scope.patientlist = results.patientData;
-			console.log(results);
+			$scope.patientlist = results.data.patientData;
+			console.log(results.data.patientData);
 		});
 	});
 	

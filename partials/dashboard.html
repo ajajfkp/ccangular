@@ -1,4 +1,4 @@
-<div header></div>
+<div ui-view="columnOne"></div>
 <div class="rest-body">
 	<div class="rest-body-inner-new">
 		<div id="main-charge-capture-list">
@@ -112,9 +112,9 @@
 						<div class="drop-down-topnav hide">
 							<div class="top-nod" id="top-nod">
 								<div class="all-status">
-									<span class="all-text temp-slect-Addmi-dd <?php echo $addststclass; ?>"><?php echo $ststVal; ?></span></span>
-									<input type="hidden" value="<?php echo (empty($statusvar)?'Admitted':$statusvar);?>" id="admissionStatusVal">
-									<input type="hidden" value="<?php echo (empty($statusvar)?'Admitted':$statusvar);?>" id="admissionStatusId">
+									<span class="all-text temp-slect-Addmi-dd"></span></span>
+									<input type="hidden" value="" id="admissionStatusVal">
+									<input type="hidden" value="" id="admissionStatusId">
 									<img  class="drop-arr-ftlr" src="images/add-fltr.png" />
 								</div>
 							</div>
@@ -206,7 +206,90 @@
 			</nav>
 		<span id="pickadate" style="display:none;position:absolute;float:left;top:25%;right:10%;z-index:99999"></span>
 			<!--email section-->
-		<div class="cc-mobile-message hide" id="EmailSections">		
+		
+		<div class="mng-bil-list-mid-sec" id="more-data-id">	
+			<div class="section" ng-repeat='patient in patientlist'>
+				<div id="mobilePatientList">
+						<aside>
+							<span class="status-light">&nbsp;</span>
+							<span class="cnt-pnt-stus">Admited</span>
+						</aside>
+						<div class="rfc-dsgn-mtter fixheight85 article">
+							<div class="left-sd-bx">
+								<a href="#">
+									<div class="named-pnt">
+										<span class="left clipText width-46-nw">
+											<b>{{patient.patientName}}</b>
+										</span>
+										<span class="pnt-info">
+												18 {{patient.patientGender}},
+												DOB:{{patient.patientDob | date}}
+										</span>
+									</div> 
+									<span class="scnd-info-row clipText">
+										<b>ID:</b>
+										
+									</span>
+									<span class="scnd-info-row">
+										<b>Adm:</b>
+										Adm
+										<b>Dis:</b>
+										Dis
+									</span>
+									<span class="scnd-info-row">
+										<span class="left nw-modi-wd-46">
+											<b>Encounter:</b>
+										</span> 
+
+									</span>
+								</a>
+							</div>
+							<div class="right-sd-bx" id="listParent">
+								<span class="rgt-side-img-2 menu-1" onclick="ShowDropdown()"><img src="images/menue-drp.png"></span>
+								<div class="drop-down billListDd hide" id="listId_">
+									<div class="hundee" id="hundee_" onclick="hideDropdown()">
+										<span class="dashline-2">&nbsp;</span>
+										<div style="float:left; width:15px;">
+											<span class="dashline">&nbsp;</span>
+											<span class="dashline">&nbsp;</span>
+										</div>
+										<span class="arro-topway"></span>
+									</div>
+									<div class="drop-backg">
+										<a href="cc/index/addNewEncounter/" >
+											<span class="option-list" id="newEnctrMobile123">
+												New Encounter
+											</span>
+										</a>
+										<a href="cc/index/addNewEncounter/1" >
+											<span class="option-list" id="newEnctrMobile123">
+												New Procedure
+											</span>
+										</a>
+							
+										<span class="option-list" id="newAdmission" onclick="newAdmissionCopy('','1')" >New Admission</span>
+
+										<span class="option-list" id="generateBill" onclick="generateCcBillConfirm()" >			Generate Bill
+										</span>
+
+										<span class="option-list" id="sendTobillermob" onclick="javascript:emailfromhomemob()">Email</span>
+										<span class="option-list" onclick="javascript:deleteCp()">Delete</span>
+									</div>
+								</div>
+								<div style="float:left; margin-top:10px; margin-left:5px; font-weight:bold">ccr</div>
+							</div>
+						</div>
+						<div style="clear:both;">
+						</div>	
+				</div>	
+			</div>
+			<input type="hidden" name="serchInAllDb" id="serchInAllDb" value="">			
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="cc-mobile-message hide" id="EmailSections">		
 			<div class="patnt-info-name-hd">
 				<span class="pntname">Message</span>
 				<span class="go-to-home email-backawwo"><img src="images/Shape-back.png"></span>
@@ -227,7 +310,7 @@
 							<span class="to-lable-email">To:</span>
 							<span class="to-input-email">
 								<input type="hidden" value="" id="lastSelectedUserId">
-								<input type="text" id="billerEmail"  name="billerEmail" readonly="readonly" id="toIdIntra" value="<?php echo CHARGE_CAPTURE_BILLER_EMAIL;?>" size="60">
+								<input type="text" id="billerEmail"  name="billerEmail" readonly="readonly" id="toIdIntra" value="" size="60">
 							</span>
 						</div>
 						<div class="sender-selection-row">
@@ -254,106 +337,7 @@
 				</div>
 			</section>			
 		</div>
-		<div class="mng-bil-list-mid-sec" id="more-data-id">	
-			<div class="section">
-				<div id="mobilePatientList">
-						<aside>
-							<span class="<?php echo $statusClass1; ?>">&nbsp;</span>
-							<span class="<?php echo $statusClass2; ?>"><?php echo $statusMessage; ?></span>
-						</aside>
-						<div class="rfc-dsgn-mtter fixheight85 article">
-							<div class="left-sd-bx">
-								<a href="<?php echo base_url(); ?>cc/index/visitEncounter/<?php echo $val->id; ?>">
-							<?php 
-								$extraClass = (($val->patient_type=='1')?"named-pnt-type-med":"");
-							?>
-									<div class="named-pnt <?php echo $extraClass; ?>">
-										<span class="left clipText width-46-nw">
-											<b><?php echo $patientInfoName; ?></b>
-										</span>
-										<span class="pnt-info">
-											<?php 
-												if(!empty($patientInfoDob)){
-													echo $patientInfoAge;
-												}
-												echo ' ' . $patientInfoGender;
-												?>,
-												<b> DOB:</b>
-												<?php 
-													if(!empty($patientInfoDob)) {
-														echo $patientInfoDob;
-													}
-												?>
-										</span>
-									</div> 
-									<span class="scnd-info-row clipText">
-										<b>ID:</b>
-										<?php 
-											echo $patientInfoId . ', ' . (empty($val->facility_name)?'N/A':$val->facility_name)
-										?>
-									</span>
-									<span class="scnd-info-row">
-										<b>Adm:</b>
-										<?php 
-										echo $this->utilities->showDateForSpecificTimeZone($val->date_of_admission);?>,
-										<b>Dis:</b>
-										<?php 
-											echo $this->utilities->showDateForSpecificTimeZone($val->date_of_discharge);
-										?>
-									</span>
-									<span class="scnd-info-row">
-										<span class="left nw-modi-wd-46">
-											<b>Encounter:</b>
-											<?php echo $crrTime; ?>
-										</span> 
-										<?php echo $serviceStat; ?>
-										<?php echo $billStat; ?>
-										<?php echo $totalRvusView; ?>
-									</span>
-								</a>
-							</div>
-							<div class="right-sd-bx" id="listParent">
-								<span class="rgt-side-img-2 menu-1" onclick="ShowDropdown(<?php echo $val->id; ?>)"><img src="images/menue-drp.png"></span>
-								<div class="drop-down billListDd hide" id="listId_<?php echo $val->id; ?>">
-									<div class="hundee" id="hundee_<?php echo $val->id; ?>" onclick="hideDropdown()">
-										<span class="dashline-2">&nbsp;</span>
-										<div style="float:left; width:15px;">
-											<span class="dashline">&nbsp;</span>
-											<span class="dashline">&nbsp;</span>
-										</div>
-										<span class="arro-topway"></span>
-									</div>
-									<div class="drop-backg">
-										<a href="<?php echo base_url(); ?>cc/index/addNewEncounter/" >
-											<span class="option-list" id="newEnctrMobile123">
-												New Encounter
-											</span>
-										</a>
-										<a href="<?php echo base_url(); ?>cc/index/addNewEncounter/1" >
-											<span class="option-list" id="newEnctrMobile123">
-												New Procedure
-											</span>
-										</a>
-							
-										<span class="option-list" id="newAdmission" onclick="newAdmissionCopy('','1')" >New Admission</span>
-
-										<span class="option-list" id="generateBill" onclick="generateCcBillConfirm()" >			Generate Bill
-										</span>
-
-										<span class="option-list" id="sendTobillermob" onclick="javascript:emailfromhomemob(<?php echo $val->id; ?>)">Email</span>
-										<span class="option-list" onclick="javascript:deleteCp()">Delete</span>
-									</div>
-								</div>
-								<div style="float:left; margin-top:10px; margin-left:5px; font-weight:bold"><?php echo "[".$patientType."]";?></div>
-							</div>
-						</div>
-						<div style="clear:both;">
-						</div>	
-				</div>	
-			</div>
-			<input type="hidden" name="serchInAllDb" id="serchInAllDb" value="">			
-			</div>
-		</div>
-	</div>
+	
+	
 </div>
-<div footer></div>
+ <div ui-view="columnTwo"></div>
