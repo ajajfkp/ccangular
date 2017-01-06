@@ -211,38 +211,36 @@
 			<div class="section" ng-repeat='patient in patientlist'>
 				<div id="mobilePatientList">
 						<aside>
-							<span class="status-light">&nbsp;</span>
-							<span class="cnt-pnt-stus">Admited</span>
+							<span ng-class='{"Admitted":"status-light","FollowUp Done":"status-light-4","Discharged":"status-light-3","Consult Done":"status-light-2"}[patient.statusMessage]'>&nbsp;</span>
+							<span ng-class='{"Admitted":"cnt-pnt-stus","FollowUp Done":"cnt-pnt-stus status-light-4-text","Discharged":"cnt-pnt-stus","Consult Done":"cnt-pnt-stus"}[patient.statusMessage]'>{{patient.statusMessage | strLimit:8}}</span>
 						</aside>
 						<div class="rfc-dsgn-mtter fixheight85 article">
 							<div class="left-sd-bx">
-								<a href="#">
-									<div class="named-pnt">
-										<span class="left clipText width-46-nw">
-											<b>{{patient.patientName}}</b>
-										</span>
-										<span class="pnt-info">
-												18 {{patient.patientGender}},
-												DOB:{{patient.patientDob | date}}
-										</span>
-									</div> 
-									<span class="scnd-info-row clipText">
-										<b>ID:</b>
-										
+								<div class="named-pnt">
+									<span class="left clipText width-46-nw">
+										<b>{{patient.patientName}}</b>
 									</span>
-									<span class="scnd-info-row">
-										<b>Adm:</b>
-										Adm
-										<b>Dis:</b>
-										Dis
+									<span class="pnt-info">
+											{{patient.patientAge}} {{patient.patientGender}},
+											DOB:{{patient.patientDob | date}}
 									</span>
-									<span class="scnd-info-row">
-										<span class="left nw-modi-wd-46">
-											<b>Encounter:</b>
-										</span> 
-
-									</span>
-								</a>
+								</div> 
+								<span class="scnd-info-row clipText">
+									<b>ID:</b>
+									{{patient.medical_record}},{{patient.facilityName}}
+								</span>
+								<span class="scnd-info-row">
+									<b>Adm:</b>
+									{{patient.dateOfAdmm |date}}
+									<b>Dis:</b>
+									{{patient.dateOfDisc | date}}
+								</span>
+								<span class="scnd-info-row">
+									<span class="left nw-modi-wd-46">
+										<b>Encounter:</b>
+									</span> 
+									{{patient.serviceDate | date}}
+								</span>
 							</div>
 							<div class="right-sd-bx" id="listParent">
 								<span class="rgt-side-img-2 menu-1" onclick="ShowDropdown()"><img src="images/menue-drp.png"></span>
@@ -269,7 +267,7 @@
 							
 										<span class="option-list" id="newAdmission" onclick="newAdmissionCopy('','1')" >New Admission</span>
 
-										<span class="option-list" id="generateBill" onclick="generateCcBillConfirm()" >			Generate Bill
+										<span class="option-list" id="generateBill" onclick="generateCcBillConfirm()" >Generate Bill
 										</span>
 
 										<span class="option-list" id="sendTobillermob" onclick="javascript:emailfromhomemob()">Email</span>

@@ -77,6 +77,7 @@ var app = angular.module('noteMpdule',['ui.router','infinite-scroll','toaster','
 			$scope.patientlist = results.data.patientData;
 			console.log(results.data.patientData);
 		});
+		
 	});
 	
 	app.factory("Data", ['$http','baseSetting', function ($http,baseSetting) {

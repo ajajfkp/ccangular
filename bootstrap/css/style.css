@@ -819,7 +819,9 @@ nav .trd-nav-row .crnt-days .all-text {
 }
 
 aside {
+    border: 1px solid #fff;
     float: left;
+    height: 78px;
     width: 28px;
 }
 
@@ -835,10 +837,10 @@ aside {
 
 aside .cnt-pnt-stus {
     color: #ffffff;
-    float: left;
+    float: right;
     font-size: 1.2em;
     font-weight: bold;
-    margin: 23px -11px;
+    margin: 20px -11px 0 0;
     transform: rotate(-90deg);
 }
 
@@ -851,7 +853,7 @@ article, .article {
     float: left;
     margin-bottom: 2px;
     min-height: 30%;
-    width: calc(100% - 28px);
+    width: calc(100% - 30px);
 }
 
 article .left-sd-bx, .article .left-sd-bx {
@@ -1019,6 +1021,42 @@ article .right-sd-bx, .article .right-sd-bx {
     font-size: 12px;
     padding: 15px 0 15px 10%;
     width: 90%;
+}
+
+.status-light-3 {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #67c119 0%, #52ad16 44%, #49a815 100%) repeat scroll 0 0;
+    border: 2px solid #cac6c3;
+    border-radius: 50%;
+    float: left;
+    height: 12px;
+    margin: 0 0 0 7px;
+    width: 12px;
+}
+
+
+.status-light-2 {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #34b1d3 0%, #31a0c9 44%, #2a7ca8 100%) repeat scroll 0 0;
+    border: 2px solid #cac6c3;
+    border-radius: 50%;
+    float: left;
+    height: 12px;
+    margin: 5px 0 0 7px;
+    width: 12px;
+}
+
+
+.status-light-4 {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #e570e7 0%, #a849a3 100%) repeat scroll 0 0;
+    border: 2px solid #cac6c3;
+    border-radius: 50%;
+    float: left;
+    height: 12px;
+    margin: 0 0 0 7px;
+    width: 12px;
+}
+
+.status-light-4-text {
+	margin: 22px -17px 0 0 !important;
 }
 
 
