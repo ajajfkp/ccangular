@@ -57,9 +57,26 @@ app.directive('modalDialog', function() {
   };
 });
 
-app.controller('MyCtrl', ['$scope', function($scope) {
-$scope.modalShown = false;
-$scope.toggleModal = function() {
-	$scope.modalShown = !$scope.modalShown;
-};
-}]);
+app.directive("datepicker", function () {
+  return {
+    restrict: "A",
+    require: "ngModel",
+    link: function ($scope, elem, attrs, ngModelCtrl) {
+      var updateModel = function (dateText) {
+        $scope.$apply(function () {
+          ngModelCtrl.$setViewValue(dateText);
+        });
+      };
+      var options = {
+        dateFormat: "mm-dd-yy",
+        onSelect: function (dateText) {
+          updateModel(dateText);
+        }
+      };
+	  $jql(document).ready(function(){
+		  elem.datepicker(options);
+	  })
+      
+    }
+  }
+});

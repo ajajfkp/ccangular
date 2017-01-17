@@ -6,8 +6,8 @@
 				<img src="images/cc_refresh.png" style="width:40px;">
 			</div>
 			<div class="secnd-hed-top">
-				<div class="menu-drp-dwn topmenu" style="width:15%;" ng-click="showmainsearch();">
-					<div class="menu-linner">
+				<div class="menu-drp-dwn topmenu" style="width:15%;">
+					<div class="menu-linner" ng-click="showmainsearch();">
 						<span class="dashline-2-menue">&nbsp;</span>
 						<div style="float:left; width:15px;">
 							<span class="dashline-menue">&nbsp;</span>
@@ -15,37 +15,64 @@
 						</div>
 						<span class="arro-topway-menue"></span>
 					</div>
-					<div class="drop-down-mene hide topmenu-list">
+					<div class="drop-down-mene topmenu-list" id="mainsearch">
 						<div class="drop-down-optionbox">
-							<div class="select-arrow">
-								<div class="menu-linner-inside">
-									<span class="dashline-2">&nbsp;</span>
-									<div style="float:left; width:15px;">
-									<span class="dashline">&nbsp;</span>
-									<span class="dashline">&nbsp;</span>
-									</div>
-									<span class="arro-topway"></span>
-								</div>
-							</div>	
-							<div class="">
-								<span class="option-list" id="patnt-flr">Patient Name</span>
-								<span class="option-list" id="discharg-flr">Discharge Date</span>
-								<span class="option-list" id="admitted-flr">Admitted Date</span>
-								<span class="option-list" id="billing-flr">Billing Status</span>
-								<span class="option-list" id="mrn-flr">MRN #</span>
+							<div class="serch-group-head">
+								<span class="serch-group-head-text">Main search</span>
+								<span class="serch-group-head-close" ng-click="closeSearch();">X</span>
 							</div>
-						</div>	
+							<div class="">
+								<label class="serch-grup-head" for="group-1">Search Aria</label>
+								<span class="">
+									<span class="option-list search-chield" ng-click="searchBypatient(1);">Patient name</span>
+									<span class="option-list search-chield" ng-click="searchBypatient(2);">Discharge date</span>
+									<span class="option-list search-chield" ng-click="searchBypatient(3);">Admitted date</span>
+									<span class="option-list search-chield" ng-click="searchBypatient(4);">MRN#</span>
+								</span>
+							</div>
+							<div class="serch-group">
+								<label class="serch-grup-head" for="group-1">Group 1</label>
+								<span class="">
+									<span class="search-chield" id="patnt-flr">Patient 1</span>
+									<span class="search-chield" id="patnt-flr">Patient 2</span>
+									<span class="search-chield" id="patnt-flr">Patient 3</span>
+								</span>
+							</div>
+							<div class="serch-group">
+								<label class="serch-grup-head" for="group-1">Group 1</label>
+								<span class="">
+									<span class="option-list search-chield" id="patnt-flr">Patient 1</span>
+									<span class="option-list search-chield" id="patnt-flr">Patient 2</span>
+									<span class="option-list search-chield" id="patnt-flr">Patient 3</span>
+								</span>
+							</div>
+							<div class="serch-group">
+								<label class="serch-grup-head" for="group-1">Group 1</label>
+								<span class="">
+									<span class="option-list search-chield" id="patnt-flr">Patient 1</span>
+									<span class="option-list search-chield" id="patnt-flr">Patient 2</span>
+									<span class="option-list search-chield" id="patnt-flr">Patient 3</span>
+								</span>
+							</div>
+							<div class="serch-group">
+								<label class="serch-grup-head" for="group-1">Group 1</label>
+								<span class="">
+									<span class="search-chield" id="patnt-flr">Patient 1</span>
+									<span class="search-chield" id="patnt-flr">Patient 2</span>
+									<span class="search-chield" id="patnt-flr">Patient 3</span>
+								</span>
+							</div>
+						</div>
 					</div>
+					<div id="mask" class="hide" ng-click="closeSearch()">&nbsp;</div>
 				</div>
 				
 				<div class="search-area cc-srch-area">
 					<span class="input">
 						<span class="search-innr-effects">
-						<input class="seach-input" type="text" placeholder="" id="searchkey" clickbutton="searchdo" value="">
-						<input type="hidden" id="searchKeytype" value="">
-						
+						<input class="seach-input" type="text" placeholder="" id="searchkey" clickbutton="searchdo" ng-model="searchText" datepicker />
 						</span>	
-						<img class="search-icon" id="searchdo" src="images/searchcon.png">
+						<img class="search-icon" ng-click="searchdo()" id="searchdo" src="images/searchcon.png">
 						<span class="crss-icon-srch-ptnt" id="crossimg" ng-hide="true">X</span>
 					</span>	
 					
@@ -208,7 +235,7 @@
 			<!--email section-->
 		
 		<div class="mng-bil-list-mid-sec" id="more-data-id">	
-			<div class="section" ng-repeat='patient in patientlist'>
+			<div class="section" ng-repeat='patient in patientlist |  filter:{patientName: searchText}'>
 				<div id="mobilePatientList">
 						<aside>
 							<span ng-class='{"Admitted":"status-light","FollowUp Done":"status-light-4","Discharged":"status-light-3","Consult Done":"status-light-2"}[patient.statusMessage]'>&nbsp;</span>
